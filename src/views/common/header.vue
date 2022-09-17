@@ -1,15 +1,18 @@
 <template>
   <t-header class="header">
-    <CollapseButton v-model:collapse="appStore.menuCollapse"></CollapseButton>
-    <div>
-      <t-dropdown :options="[{ content: '退出登录', value: 'logout' }]"
-                  :min-column-width="112"
-                  @click="clickHandler">
+    <collapse-button v-model:collapse="appStore.menuCollapse"></collapse-button>
+
+    <div class="operation-area">
+      <t-dropdown
+        :options="[{ content: '退出登录', value: 'logout' }]"
+        :min-column-width="112"
+        @click="clickHandler"
+      >
         <t-button variant="text">
           <template #icon>
             <icon name="user"></icon>
           </template>
-          {{ userState.currentUser && userState.currentUser.nickname }}
+          {{ userStore.currentUser && userStore.currentUser.nickname }}
         </t-button>
       </t-dropdown>
     </div>
@@ -17,42 +20,34 @@
 </template>
 
 <script lang="ts" setup>
-import { Icon } from "tdesign-icons-vue-next";
-import { userUserState } from "@/store/user";
+import { Icon } from "tdesign-vue-next";
+import { useAppStore, useUserStore } from "@/store";
 import type { DropdownOption } from "tdesign-vue-next";
-import { useAppStore } from "@/store";
 import { useRoute, useRouter } from "vue-router";
-import { MessagePlugin } from "tdesign-vue-next";
+import CollapseButton from "@/components/CollapseButton.vue";
 
-import CollapseButton from "@/components/CollapseButton.vue"
-
-const userState = userUserState();
+const userStore = useUserStore();
 const appStore = useAppStore();
-
-
-const router = useRouter()
-const route = useRoute()
-
-
-const clickHandler = async ({value}: DropdownOption)=>{
-  switch (value){
+const router = useRouter();
+const route = useRoute();
+const clickHandler = async ({ value }: DropdownOption) => {
+  switch (value) {
     case "logout":
       await appStore.logout();
-      await router.push(`logout?redirect=${route.fullPath}`)
+      await router.push({
+        name: "login",
+        params: { redirect: route.fullPath },
+      });
       break;
-    default:
-      await MessagePlugin.error("该指令无设置任何操作")
-      throw new Error("该指令无设置任何操作")
   }
-}
-
+};
 </script>
 
 <style lang="less" scoped>
 .header {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  padding: 0 12px;
+  align-items: center;
+  padding: 0 16px;
 }
 </style>

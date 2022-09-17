@@ -1,5 +1,9 @@
 <template>
-  <t-menu-item v-if="item && !item.children" :to="{name:item.name}">
+  <t-menu-item
+    v-if="item && !item.children"
+    :value="item.name"
+    :to="{ name: item.name }"
+  >
     <template #icon>
       <icon :name="item.meta.icon" />
     </template>
@@ -7,33 +11,29 @@
   </t-menu-item>
   <t-submenu
     v-if="item && item.children"
-    :value = "item.name"
+    :value="item.name"
     :title="item.meta.title"
   >
     <template #icon>
       <icon :name="item.meta.icon" />
     </template>
-    <SidebarItem
+    <sidebar-item
       v-for="subItem in item.children"
       :key="subItem.name"
       :item="subItem"
-    ></SidebarItem>
+    ></sidebar-item>
   </t-submenu>
 </template>
 
 <script lang="ts" setup>
-import {Icon} from "tdesign-icons-vue-next"
+import { Icon } from "tdesign-vue-next";
 
 defineProps({
-  item:{
-    type:Object,
-    default:null,
-  }
-})
-
-
+  item: {
+    type: Object,
+    default: null,
+  },
+});
 </script>
 
-<style lang="less" scoped>
-
-</style>
+<style scoped></style>

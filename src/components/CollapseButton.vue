@@ -7,13 +7,13 @@
 </template>
 
 <script lang="ts" setup>
-import { defineEmits } from "vue";
 defineProps({
   collapse: {
     type: Boolean,
     required: true,
   },
 });
+
 defineEmits(["update:collapse"]);
 </script>
 
@@ -28,6 +28,7 @@ defineEmits(["update:collapse"]);
   cursor: pointer;
   transition: 0.5s;
   position: relative;
+
   &:before {
     position: absolute;
     width: 70%;
@@ -37,6 +38,7 @@ defineEmits(["update:collapse"]);
     transform: translateY(-7px);
     transition: 0.5s;
   }
+
   &:after {
     position: absolute;
     width: 70%;
@@ -47,10 +49,12 @@ defineEmits(["update:collapse"]);
     transform: translateY(7px);
     transition: 0.5s;
   }
+
   &.collapse {
     &:before {
       transform: translateY(0px) rotate(45deg);
     }
+
     &:after {
       transform: translateY(0px) rotate(-45deg);
       box-shadow: 0 0 0 @collapse-button-color;

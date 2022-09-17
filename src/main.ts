@@ -1,32 +1,26 @@
-import { createApp } from 'vue'
-import App from './App.vue'
+import { createApp, h } from "vue";
+import TDesign from "tdesign-vue-next";
+
+import App from "./App.vue";
 import router from "@/router";
 
-// TDesign-ui引入
-import TDesign from 'tdesign-vue-next';
 // 引入组件库全局样式资源
-import 'tdesign-vue-next/dist/reset.css';
-import 'tdesign-vue-next/es/style/index.css';
-
-// 引入Pinia
+import "tdesign-vue-next/dist/reset.css";
+import "tdesign-vue-next/es/style/index.css";
+import "@/assets/less/base.less";
 import { createPinia } from "pinia";
-// 引入Pinia的相关插件
-import piniapluginpersistedstate from "pinia-plugin-persistedstate"
-
-// 自定义指令
+import piniaPluginPersistedstate from "pinia-plugin-persistedstate";
 import { permissionDirective } from "@/directives/permission";
+import { plugin } from "echarts-for-vue";
+import * as echarts from "echarts";
 
+const pina = createPinia();
+pina.use(piniaPluginPersistedstate);
+const app = createApp(App);
+app.use(router);
+app.use(TDesign);
+app.use(pina);
+app.use(plugin, { echarts, h });
+app.directive("permission", permissionDirective);
 
-
-
-
-const pinia = createPinia()
-pinia.use(piniapluginpersistedstate)
-
-
-createApp(App)
-  .use(router)
-  .use(TDesign)
-  .use(pinia)
-  .directive("permission", permissionDirective)
-  .mount('#app')
+app.mount("#app");

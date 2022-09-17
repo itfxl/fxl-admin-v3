@@ -1,15 +1,7 @@
 <template>
-<div class="page">
   <router-view></router-view>
-</div>
 </template>
 
-<script lang="ts" setup>
+<script lang="ts" setup></script>
 
-</script>
-
-<style lang="less" scoped>
-.page{
-  padding: 24px;
-}
-</style>
+<style lang="less" scoped></style>
