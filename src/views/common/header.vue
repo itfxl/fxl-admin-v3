@@ -6,8 +6,7 @@
       <t-dropdown
         :options="[{ content: '退出登录', value: 'logout' }]"
         :min-column-width="112"
-        @click="clickHandler"
-      >
+        @click="clickHandler">
         <t-button variant="text">
           <template #icon>
             <icon name="user"></icon>

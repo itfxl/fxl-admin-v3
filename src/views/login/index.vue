@@ -2,7 +2,7 @@
   <div class="login-container">
     <div class="content">
       <t-card>
-        <h1>YiLi Admin</h1>
+        <h1>FxlAdmin</h1>
         <t-form
           ref="form"
           :data="loginForm"
@@ -10,14 +10,12 @@
           class="login-form"
           :colon="true"
           :label-width="0"
-          @submit="handleLogin"
-        >
+          @submit="handleLogin">
           <t-form-item name="username">
             <t-input
               v-model="loginForm.username"
               clearable
-              placeholder="请输入用户名"
-            >
+              placeholder="请输入用户名">
               <template #prefix-icon>
                 <icon name="desktop" />
               </template>
@@ -28,16 +26,14 @@
               v-model="loginForm.password"
               type="password"
               clearable
-              placeholder="请输入密码"
-            >
+              placeholder="请输入密码">
               <template #prefix-icon>
                 <icon name="lock-on" />
               </template>
             </t-input>
           </t-form-item>
           <t-form-item style="padding-top: 8px">
-            <t-button theme="primary" type="submit" block :loading="loading"
-              >登录
+            <t-button theme="primary" type="submit" block :loading="loading">登录
             </t-button>
           </t-form-item>
         </t-form>

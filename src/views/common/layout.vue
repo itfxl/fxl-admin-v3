@@ -7,9 +7,7 @@
         <t-content class="content-layout">
           <router-view></router-view>
         </t-content>
-        <t-footer style="text-align: center"
-          >Copyright @ 2021-2022 YiliAdmin.</t-footer
-        >
+        <t-footer style="text-align: center">Copyright @ 2021-2022 FxlAdmin.</t-footer>
       </t-layout>
     </t-layout>
   </div>
