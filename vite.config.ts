@@ -5,7 +5,7 @@ import vue from "@vitejs/plugin-vue";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: "/fxl-admin-v3-demo/",
+  base:"/fxl-admin-v3/",
   plugins: [vue(), splitVendorChunkPlugin()],
   resolve: {
     alias: {
