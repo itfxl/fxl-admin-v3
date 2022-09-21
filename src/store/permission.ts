@@ -14,9 +14,9 @@ const filterRoutes = (
     if (route.children) {
       route.children = filterRoutes(route.children, permissions);
     }
-    // 1. 没有定义meta的路由 ： !route.meta
+    // 1. 没有定义meta的路由： !route.meta
     // 2. 没有定义meta里面permission !route.meta.permission
-    // 3. permission是否存在与当前permissions 里面
+    // 3. permission是否存在与当前permissions里面
     return (
       !route.meta ||
       (route.meta &&

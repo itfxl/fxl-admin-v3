@@ -15,7 +15,7 @@
             <t-input
               v-model="loginForm.username"
               clearable
-              placeholder="请输入用户名">
+              placeholder="账号：admin">
               <template #prefix-icon>
                 <icon name="desktop" />
               </template>
@@ -26,7 +26,7 @@
               v-model="loginForm.password"
               type="password"
               clearable
-              placeholder="请输入密码">
+              placeholder="密码：admin123">
               <template #prefix-icon>
                 <icon name="lock-on" />
               </template>
